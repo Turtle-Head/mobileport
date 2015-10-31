@@ -419,7 +419,7 @@ var resizePizzas = function(size) {
     }
   }
 
-  changeSliderLabel(size);
+  requestAnimationFrame(changeSliderLabel(size));
 
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
@@ -457,7 +457,7 @@ var resizePizzas = function(size) {
     }
   }
 
-  changePizzaSizes(size);
+  requestAnimationFrame(changePizzaSizes(size));
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
