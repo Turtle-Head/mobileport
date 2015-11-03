@@ -33,8 +33,15 @@ form {
   position: fixed;
   width: 256px;
   z-index: -1;
+  /* Attribution #002: http://codepen.io/chriscoyier/pen/kyctm */
+  animation: ease 3s move infinite;
 }
-
+@keyframes move {
+  50% {
+     transform: translate(100px);
+  }
+}
+/* End of attribution #002 */
 .randomPizzaContainer {
   float: left;
   display: flex;
