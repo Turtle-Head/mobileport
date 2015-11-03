@@ -469,7 +469,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 50; i++) {
+for (var i = 2; i < 200; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -496,17 +496,34 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
+var items = document.getElementsByClassName('mover');
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
+  var cachedLength = items.length;
+  // Attribution #001: http://gist.github.com/prather-mcs/05526bb379f845ee2ba1
+  var top = document.body.scrollTop;
+  var constArray = [];
+  var i;
+  // This generates the same five values which were always repeating in the
+  // longer loop, and places them in `constArray`, which holds these five
+  // constant, repeating values:
+  for (i = 0; i < 5; i++) {
+    constArray.push(Math.sin((top / 1250) + i % 5));
+  }
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+
+  // Now this for-loop can get the usual value for phase by pulling it out of
+  // the constant array. This works because the non-optimal code was doing a
+  // lot of work just to calculate and re-calculate and re-calculate the same
+  // five values we stored in the constant array.
+  for (i = 0; i < cachedLength; i++) {
+    var phase = constArray[i % 5];
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
+// End of Attribution #001
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
