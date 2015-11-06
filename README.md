@@ -94,7 +94,9 @@ pizza.html
 production outside of loops and other variable creation out of functions
 * added a css animation to the sliding background pizzas which not only improves
  framerate but keeps pizzas moving constantly so the user experiences less jank
+
 views/main.js
+#------------
 * minimized main.js
 * dynamic calculation of random pizzas generated rather than using a large
 arbitrary number
