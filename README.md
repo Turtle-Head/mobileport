@@ -104,3 +104,6 @@ arbitrary number
 getElementsByClass outside of the Loops
 * changed querySelector calls inside changeSliderLabel function to
 getElementById
+* moved multiple variable production out of the Loop in the changePizzaSizes
+function resulting in a huge increase in rendering speed of resized Pizzas
+(600ms->0.805...ms)
