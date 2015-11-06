@@ -73,11 +73,13 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+
 ### ---------------------------------------------------------------------------------
 Steps taken to Optimize the Portfolio
 ###----------------------------------------------------------------------------------
 
 all
+#-----------------------------------------------------------------------
 * image compression of all art assets using gimp's compression to reduce
 file size
 * minimized the css files
@@ -87,10 +89,16 @@ file size
 
 
 pizza.html
+#-----------------------------------------------------------------------
 * reduced number of variables created by main.js by moving some variable
 production outside of loops and other variable creation out of functions
 * added a css animation to the sliding background pizzas which not only improves
  framerate but keeps pizzas moving constantly so the user experiences less jank
+views/main.js
 * minimized main.js
 * dynamic calculation of random pizzas generated rather than using a large
 arbitrary number
+* changed documentQuery calls inside pizza resize loops to static variable calls to
+getElementsByClass outside of the Loops
+* changed querySelector calls inside changeSliderLabel function to
+getElementById
