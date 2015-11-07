@@ -454,7 +454,7 @@ var resizePizzas = function(size) {
     var dx = determineDx(rpizza[0], size);
     var newwidth = (rpizza[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < rpizza.length; i++) {
-      document.getElementsByClassName('.randomPizzaContainer')[i].style.width = newwidth;
+      rpizza[i].style.width = newwidth;
     }
   }
 
